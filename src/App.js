@@ -1,8 +1,13 @@
+import CreateList from "./components/CreateList";
+import Navbar from "./components/Navbar";
+import TodoList from "./components/TodoList";
 
 function App() {
   return (
     <div className="App">
-      <h1>To-Do-App</h1>
+      <Navbar />
+      <CreateList />
+      <TodoList />
     </div>
   );
 }
