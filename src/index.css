@@ -62,11 +62,11 @@ a {
 }
 
 form {
-  position:fixed;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 50px;
+  height: 80px;
 
   /* max-width: 500px; */
   /* margin: 0 auto; */
@@ -87,10 +87,10 @@ body {
 
 
 /* .App { */
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* justify-content: start;  */
-  /* width: 375px;
+/* display: flex; */
+/* flex-direction: column; */
+/* justify-content: start;  */
+/* width: 375px;
   min-height: 600px;
    max-height: 914;
   background: #161616;
@@ -102,40 +102,83 @@ body {
 } */
 
 @media(max-width:768px) {
-.hamburger {
-  display: block;
+  .hamburger {
+    display: block;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 70px;
+    gap: 0;
+    flex-direction: column;
+    background-color: #0D0014;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+  }
+
+  .nav-item {
+    margin: 16px 0;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
 }
 
-.hamburger.active .bar:nth-child(2) {
-  opacity: 0;
+article {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  border-radius: 10px;
+  color: white;
+  padding: 10px 16px;
+  margin: 20px 15px 15px;
+  background-color: #532470;
 }
 
-.hamburger.active .bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+.items-preview:hover {
+  box-shadow: 1px 3px 5px rgba(249, 251, 252, 0.1);
 }
 
-.hamburger.active .bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+.button-add {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 50%;
+  width: 40px;
 }
 
-.nav-menu {
-  position: fixed;
-  left: -100%;
-  top: 70px;
-  gap: 0;
-  flex-direction: column;
-  background-color: #0D0014;
-  width: 100%;
-  text-align: center;
-  transition: 0.3s;
+input {
+  height: 70%;
+  width: 80%;
+  border-radius: 10px;
+  background-color: #C7C5C5;
 }
 
-.nav-item {
-  margin: 16px 0;
+.task {
+  float: left;
+  margin-left: -150px;
 }
 
-.nav-menu.active {
-  left: 0;
+.icons {
+  color: #D17E02;
 }
+ 
+.error {
+  color: white;
 }
-

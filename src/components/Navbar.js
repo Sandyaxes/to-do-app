@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -19,16 +18,16 @@ const Navbar = () => {
     return (
         <header>
             <nav className="navbar" >
-                <a href="" className="nav-branding">React Planner</a>
+                <Link to="/" className="nav-branding">React Planner</Link>
                 <ul className="nav-menu">
                     <li className="nav-item">
-                        <a href="#" className="nav-link">Task List</a>
+                        <Link to="/" className="nav-link">Task List</Link>
                     </li>
                     <li className="nav-item">
-                        <a href="#" className="nav-link">Completed Task</a>
+                        <Link to="/CompletedTasks" className="nav-link">Completed Task</Link>
                     </li>
                     <li className="nav-item">
-                        <a href="#" className="nav-link">Archived Tasks</a>
+                        <Link to="/ArchivedTasks" className="nav-link">Archived Tasks</Link>
                     </li>
                 </ul>
                 <div className="hamburger" onClick={handleHamBurger}>
@@ -40,4 +39,5 @@ const Navbar = () => {
         </header>
     );
 }
+
 export default Navbar;
