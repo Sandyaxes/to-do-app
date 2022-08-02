@@ -5,17 +5,17 @@ const TodoList = ({ list }) => {
     const [data, setData] = useState(list);
 
     const completeTask = (id) => {
-        deleteData(id,`http://localhost:8000/list/${id}`,'http://localhost:8000/completed')
+        deleteData(id, `http://localhost:8000/list/${id}`, 'http://localhost:8000/completed')
     }
 
     const handleDelete = (id) => {
-        deleteData(id,`http://localhost:8000/list/${id}`,'http://localhost:8000/archived')
+        deleteData(id, `http://localhost:8000/list/${id}`, 'http://localhost:8000/archived')
     }
 
     const deleteData = (id, deleteUrl, archiveUrl) => {
         const newList = data.filter(item => item.id !== id);
         const newTask = data.filter(item => item.id === id);
-        
+
         fetch(deleteUrl, {
             method: 'DELETE'
         }).then(

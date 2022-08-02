@@ -5,7 +5,7 @@ const CreateList = () => {
     const [task, setTask] = useState('');
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         const newTask = { task };
 
         fetch('http://localhost:8000/list', {
@@ -13,7 +13,7 @@ const CreateList = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newTask)
         }).then(() => {
-            setTask("")
+            setTask('');
         })
     }
 
@@ -26,11 +26,8 @@ const CreateList = () => {
                 value={task}
                 onChange={(e) => setTask(e.target.value)} />
             <button className="fabutton"><FaCheckCircle className="button-add icons" /></button>
-        </form>, newTask
-        
+        </form>
     );
 }
-
-// console.log(newTask)
 
 export default CreateList;
