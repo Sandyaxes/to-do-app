@@ -1,20 +1,30 @@
 import { useState } from "react";
-import { FaTrashAlt, FaRegCircle, FaCheckCircle } from 'react-icons/fa'
+import { FaTrashAlt, FaRegCircle } from 'react-icons/fa'
 
 const TodoList = ({ list }) => {
-
     const [data, setData] = useState(list);
-    const [completed, setCompleted] = useState(false);
 
-    const notDone = <FaRegCircle className="icons" onClick={() => setCompleted(!completed)} />
-    const done = <FaCheckCircle className="icons" onClick={() => setCompleted(!completed)} />
+    const completeTask = (id) => {
+        deleteData(id,`http://localhost:8000/list/${id}`,'http://localhost:8000/completed')
+    }
 
     const handleDelete = (id) => {
+        deleteData(id,`http://localhost:8000/list/${id}`,'http://localhost:8000/archived')
+    }
 
+    const deleteData = (id, deleteUrl, archiveUrl) => {
         const newList = data.filter(item => item.id !== id);
-        fetch(`http://localhost:8000/list/${id}`, {
+        const newTask = data.filter(item => item.id === id);
+        
+        fetch(deleteUrl, {
             method: 'DELETE'
-        })
+        }).then(
+            fetch(archiveUrl, {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ task: newTask[0].task })
+            })
+        )
 
         setData(newList);
     }
@@ -24,11 +34,12 @@ const TodoList = ({ list }) => {
             {data.map((item) => (
                 <div className="items-preview" key={item.id}>
                     {list && (<article>
-                        {completed ? done : notDone}
-                        <p className="task">{item.task}</p>
+                        <div className="task">
+                            {<FaRegCircle className="icons" onClick={() => completeTask(item.id)} />}
+                            <p id="task-text">{item.task}</p>
+                        </div>
                         <FaTrashAlt className="icons" onClick={() => handleDelete(item.id)} />
                     </article>)}
-
                 </div>
             ))}
         </div>

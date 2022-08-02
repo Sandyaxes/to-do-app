@@ -6,16 +6,15 @@ const CreateList = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const list = {task};
-        
-         fetch('http://localhost:8000/list',{
+        const newTask = { task };
+
+        fetch('http://localhost:8000/list', {
             method: 'POST',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(list)
-         })
-         .then(()=> {
-            console.log(list);
-         })
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newTask)
+        }).then(() => {
+            setTask("")
+        })
     }
 
     return (
@@ -26,9 +25,12 @@ const CreateList = () => {
                 required
                 value={task}
                 onChange={(e) => setTask(e.target.value)} />
-            <button><FaCheckCircle className="button-add icons" /></button>
-        </form>
+            <button className="fabutton"><FaCheckCircle className="button-add icons" /></button>
+        </form>, newTask
+        
     );
 }
+
+// console.log(newTask)
 
 export default CreateList;

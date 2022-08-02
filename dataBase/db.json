@@ -1,20 +1,23 @@
 {
   "list": [
     {
-      "task": "tyrr",
+      "task": "Watch Netflix",
       "id": 6
     },
     {
       "task": "buy water",
-      "id": 7
-    },
-    {
-      "task": "buy milk",
       "id": 8
     },
     {
-      "task": "trtrt",
+      "task": "fdffddf",
       "id": 9
     }
-  ]
+  ],
+  "completed": [
+    {
+      "task": "Do Shopping",
+      "id": 1
+    }
+  ],
+  "archived": []
 }
